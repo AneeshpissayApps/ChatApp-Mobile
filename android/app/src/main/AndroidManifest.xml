@@ -1,26 +1,195 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.chatapp">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" package="com.chatapp">
+  <queries>
+    <package android:name="com.chatapp.store" />
+    <package android:name="com.chatapp.services" />
+  </queries>
 
-    <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.RECORD_AUDIO" />
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" tools:ignore="ScopedStorage" />
+  <uses-permission android:name="android.permission.CAMERA" />
+  <uses-permission android:name="android.permission.READ_CONTACTS" />
 
-    <application
-      android:name=".MainApplication"
-      android:label="@string/app_name"
-      android:icon="@mipmap/ic_launcher"
-      android:roundIcon="@mipmap/ic_launcher_round"
-      android:allowBackup="false"
-      android:theme="@style/AppTheme">
-      <activity
-        android:name=".MainActivity"
-        android:label="@string/app_name"
-        android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
-        android:launchMode="singleTask"
-        android:windowSoftInputMode="adjustResize"
-        android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-      </activity>
-    </application>
+  <application android:name=".MainApplication" android:theme="@style/AppTheme" android:label="@string/app_name" android:icon="@mipmap/ic_launcher_blue_white" android:roundIcon="@mipmap/ic_launcher_blue_white_round" android:allowBackup="true" android:requestLegacyExternalStorage="true">
+    <activity android:name=".MainActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:launchMode="singleTask" android:windowSoftInputMode="adjustResize" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+    <activity-alias android:name="com.chatapp.MainActivitydarkblue" android:enabled="false" android:targetActivity=".MainActivity" android:icon="@mipmap/ic_launcher_dark_blue" android:roundIcon="@mipmap/ic_launcher_dark_blue_round" android:label="@string/app_name" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="com.chatapp.MainActivitydarkgreen" android:enabled="false" android:targetActivity=".MainActivity" android:icon="@mipmap/ic_launcher_dark_green" android:roundIcon="@mipmap/ic_launcher_dark_green_round" android:label="@string/app_name" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="com.chatapp.MainActivitydarkred" android:enabled="false" android:targetActivity=".MainActivity" android:icon="@mipmap/ic_launcher_dark_red" android:roundIcon="@mipmap/ic_launcher_dark_red_round" android:label="@string/app_name" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="com.chatapp.MainActivitydarkyellow" android:enabled="false" android:targetActivity=".MainActivity" android:icon="@mipmap/ic_launcher_dark_yellow" android:roundIcon="@mipmap/ic_launcher_dark_yellow_round" android:label="@string/app_name" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="com.chatapp.MainActivitydarkwhite" android:enabled="false" android:targetActivity=".MainActivity" android:icon="@mipmap/ic_launcher_dark_white" android:roundIcon="@mipmap/ic_launcher_dark_white_round" android:label="@string/app_name" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="com.chatapp.MainActivitywhiteblue" android:enabled="false" android:targetActivity=".MainActivity" android:icon="@mipmap/ic_launcher_white_blue" android:roundIcon="@mipmap/ic_launcher_white_blue_round" android:label="@string/app_name" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="com.chatapp.MainActivitywhitegreen" android:enabled="false" android:targetActivity=".MainActivity" android:icon="@mipmap/ic_launcher_white_green" android:roundIcon="@mipmap/ic_launcher_white_green_round" android:label="@string/app_name" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="com.chatapp.MainActivitywhitered" android:enabled="false" android:targetActivity=".MainActivity" android:icon="@mipmap/ic_launcher_white_red" android:roundIcon="@mipmap/ic_launcher_white_red_round" android:label="@string/app_name" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="com.chatapp.MainActivitywhiteyellow" android:enabled="false" android:targetActivity=".MainActivity" android:icon="@mipmap/ic_launcher_white_yellow" android:roundIcon="@mipmap/ic_launcher_white_yellow_round" android:label="@string/app_name" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="com.chatapp.MainActivitywhitedark" android:enabled="false" android:targetActivity=".MainActivity" android:icon="@mipmap/ic_launcher_white_dark" android:roundIcon="@mipmap/ic_launcher_white_dark_round" android:label="@string/app_name" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="com.chatapp.MainActivitybluewhite" android:enabled="false" android:targetActivity=".MainActivity" android:icon="@mipmap/ic_launcher_blue_white" android:roundIcon="@mipmap/ic_launcher_blue_white_round" android:label="@string/app_name" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="com.chatapp.MainActivitybluedark" android:enabled="false" android:targetActivity=".MainActivity" android:icon="@mipmap/ic_launcher_blue_dark" android:roundIcon="@mipmap/ic_launcher_blue_dark_round" android:label="@string/app_name" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="com.chatapp.MainActivitygreenwhite" android:enabled="false" android:targetActivity=".MainActivity" android:icon="@mipmap/ic_launcher_green_white" android:roundIcon="@mipmap/ic_launcher_green_white_round" android:label="@string/app_name" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="com.chatapp.MainActivitygreendark" android:enabled="false" android:targetActivity=".MainActivity" android:icon="@mipmap/ic_launcher_green_dark" android:roundIcon="@mipmap/ic_launcher_green_dark_round" android:label="@string/app_name" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="com.chatapp.MainActivityredwhite" android:enabled="false" android:targetActivity=".MainActivity" android:icon="@mipmap/ic_launcher_red_white" android:roundIcon="@mipmap/ic_launcher_red_white_round" android:label="@string/app_name" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="com.chatapp.MainActivityreddark" android:enabled="false" android:targetActivity=".MainActivity" android:icon="@mipmap/ic_launcher_red_dark" android:roundIcon="@mipmap/ic_launcher_red_dark_round" android:label="@string/app_name" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="com.chatapp.MainActivityyellowwhite" android:enabled="false" android:targetActivity=".MainActivity" android:icon="@mipmap/ic_launcher_yellow_white" android:roundIcon="@mipmap/ic_launcher_yellow_white_round" android:label="@string/app_name" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="com.chatapp.MainActivityyellowdark" android:enabled="false" android:targetActivity=".MainActivity" android:icon="@mipmap/ic_launcher_yellow_dark" android:roundIcon="@mipmap/ic_launcher_yellow_dark_round" android:label="@string/app_name" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="com.chatapp.MainActivitywhitebluegradient" android:enabled="false" android:targetActivity=".MainActivity" android:icon="@mipmap/ic_launcher_blue_gradient" android:roundIcon="@mipmap/ic_launcher_blue_gradient_round" android:label="@string/app_name" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="com.chatapp.MainActivitywhitegreengradient" android:enabled="false" android:targetActivity=".MainActivity" android:icon="@mipmap/ic_launcher_green_gradient" android:roundIcon="@mipmap/ic_launcher_green_gradient_round" android:label="@string/app_name" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="com.chatapp.MainActivitywhiteredgradient" android:enabled="false" android:targetActivity=".MainActivity" android:icon="@mipmap/ic_launcher_red_gradient" android:roundIcon="@mipmap/ic_launcher_red_gradient_round" android:label="@string/app_name" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="com.chatapp.MainActivitywhiteyellowgradient" android:enabled="false" android:targetActivity=".MainActivity" android:icon="@mipmap/ic_launcher_yellow_gradient" android:roundIcon="@mipmap/ic_launcher_yellow_gradient_round" android:label="@string/app_name" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="com.chatapp.MainActivitywhitemixgradient" android:enabled="false" android:targetActivity=".MainActivity" android:icon="@mipmap/ic_launcher_mix_gradient" android:roundIcon="@mipmap/ic_launcher_mix_gradient_round" android:label="@string/app_name" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity-alias>
+
+    <activity-alias android:name="com.chatapp.MainActivitydarkbluegradient" android:enabled="false" android:targetActivity=".MainActivity" android:icon="@mipmap/ic_launcher_dark_blue_gradient" android:roundIcon="@mipmap/ic_launcher_dark_blue_gradient_round" android:label="@string/app_name" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="com.chatapp.MainActivitydarkgreengradient" android:enabled="false" android:targetActivity=".MainActivity" android:icon="@mipmap/ic_launcher_dark_green_gradient" android:roundIcon="@mipmap/ic_launcher_dark_green_gradient_round" android:label="@string/app_name" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="com.chatapp.MainActivitydarkredgradient" android:enabled="false" android:targetActivity=".MainActivity" android:icon="@mipmap/ic_launcher_dark_red_gradient" android:roundIcon="@mipmap/ic_launcher_dark_red_gradient_round" android:label="@string/app_name" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="com.chatapp.MainActivitydarkyellowgradient" android:enabled="false" android:targetActivity=".MainActivity" android:icon="@mipmap/ic_launcher_dark_yellow_gradient" android:roundIcon="@mipmap/ic_launcher_dark_yellow_gradient_round" android:label="@string/app_name" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity-alias>
+    <activity-alias android:name="com.chatapp.MainActivitydarkmixgradient" android:enabled="false" android:targetActivity=".MainActivity" android:icon="@mipmap/ic_launcher_dark_mix_gradient" android:roundIcon="@mipmap/ic_launcher_dark_mix_gradient_round" android:label="@string/app_name" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity-alias>
+    <provider android:name="androidx.core.content.FileProvider" android:authorities="com.chatapp.provider" android:grantUriPermissions="true" android:exported="false">
+      <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/filepaths" />
+    </provider>
+  </application>
 </manifest>

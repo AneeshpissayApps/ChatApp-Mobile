@@ -1,112 +1,91 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+import React, { useEffect } from 'react';
+import { StatusBar } from 'react-native'
+import { Provider as PaperProvider, DefaultTheme as PaperDefaultTheme, ThemeProvider as PaperThemeProvider, configureFonts, DarkTheme as PaperDarkTheme } from 'react-native-paper';
+import { DefaultTheme as NavigationDefaultTheme, DarkTheme as NavigationDarkTheme, NavigationContainer } from '@react-navigation/native';
+import Navigator from './src/navigation';
+import { fonts } from './src/assets/fonts';
+import { colors } from './src/assets/colors';
+import { changeNavigationBarColor } from './src/components/NavigationBar';
+import useTheme from './src/hooks/useTheme';
 
-import React from 'react';
-import type {Node} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
-
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
+const fontConfig = {
+  ios: {
+    regular: {
+      fontFamily: fonts.regular,
+      fontWeight: 'normal',
+    },
+    medium: {
+      fontFamily: fonts.medium,
+      fontWeight: 'normal',
+    },
+    light: {
+      fontFamily: fonts.light,
+      fontWeight: 'normal',
+    },
+    thin: {
+      fontFamily: fonts.thin,
+      fontWeight: 'normal',
+    },
+  },
+  android: {
+    regular: {
+      fontFamily: fonts.regular,
+      fontWeight: 'normal',
+    },
+    medium: {
+      fontFamily: fonts.medium,
+      fontWeight: 'normal',
+    },
+    light: {
+      fontFamily: fonts.light,
+      fontWeight: 'normal',
+    },
+    thin: {
+      fontFamily: fonts.thin,
+      fontWeight: 'normal',
+    },
+  }
 };
 
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
+const CustomDefaultTheme = {
+  ...NavigationDefaultTheme,
+  ...PaperDefaultTheme,
+  colors: {
+    ...NavigationDefaultTheme.colors,
+    ...PaperDefaultTheme.colors,
+    background: colors.white,
+    text: colors.background
+  },
+  fonts: configureFonts(fontConfig),
 };
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+const CustomDarkTheme = {
+  ...NavigationDarkTheme,
+  ...PaperDarkTheme,
+  colors: {
+    ...NavigationDarkTheme.colors,
+    ...PaperDarkTheme.colors,
+    background: colors.background,
+    text: colors.white
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+  fonts: configureFonts(fontConfig),
+};
+
+const App = () => {
+  const { appTheme } = useTheme();
+  useEffect(() => {
+    changeNavigationBarColor(appTheme(colors.white, colors.background));
+  }, [appTheme]);
+  return (
+    <NavigationContainer theme={appTheme(CustomDefaultTheme, CustomDarkTheme)}>
+      <StatusBar backgroundColor={appTheme(colors.blue, colors.header)} barStyle="light-content" />
+      <PaperProvider theme={appTheme(CustomDefaultTheme, CustomDarkTheme)}>
+        <PaperThemeProvider theme={appTheme(CustomDefaultTheme, CustomDarkTheme)}>
+          <Navigator />
+        </PaperThemeProvider>
+      </PaperProvider>
+    </NavigationContainer>
+  )
+}
 
 export default App;
